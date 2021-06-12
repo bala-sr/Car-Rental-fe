@@ -1,0 +1,91 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80%;
+    padding: 5px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.car-container {
+    width: 30%;
+    margin: 10px;
+    padding: 5px;
+    height: auto !important;
+    border: 1px solid black;
+    height: 550px !important;
+    max-height: auto !important;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+    height: 50%;
+}
+
+input {
+    margin: 5px 0;
+}
+
+#carName {
+    text-align: center;
+    font-size: 25px;
+    margin: 5px;
+}
+
+.car-seater {
+    margin: 5px 0;
+}
+
+.hourly-rate {
+    margin: 5px 0;
+}
+
+#total-hours {
+    margin: 5px 0;
+}
+
+.btn-book {
+    background: rgb(248, 81, 81);
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 5px 0;
+    width: 45%;
+    cursor: pointer;
+    float: right;
+}
+
+.btn-calculate {
+    background: rgb(170, 248, 81);
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 5px 0;
+    width: 45%;
+    cursor: pointer;
+}
+
+.btn-calculate:hover {
+    background: rgb(164, 253, 62);
+}
+
+.react-datetime-picker__inputGroup__input {
+    margin: 6px 0;
+}
+
+.btn-book:hover {
+    background: rgb(248, 53, 53);
+}
+
+#rate-display {
+    font-weight: 600;
+}

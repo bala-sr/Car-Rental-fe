@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+
+.register-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: whitesmoke;
+    box-shadow: 2px 2px 5px 10px black;
+    padding: 30px;
+    width: 25vw;
+    font-family: sans-serif;
+}
+
+.btn-register {
+    width: 100%;
+    margin: 8px 0;
+    height: 30px;
+    background: lightsalmon;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.btn-register:hover {
+    background: rgb(255, 104, 44);
+    transition: 0.2s all ease-in;
+}
