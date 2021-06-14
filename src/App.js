@@ -17,8 +17,8 @@ function App() {
     <div className="App">
 
 
+      <Navbar />
       <BrowserRouter>
-          <Navbar />
        
           <Route path="/" exact component={Homepage} />
           {/* <Route path="/cart" exact component={Cart}/> */}

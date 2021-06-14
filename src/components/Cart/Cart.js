@@ -121,8 +121,8 @@ function Cart(props) {
     return (
         <div className="booking-container">
             <h2>Booking Details</h2>
-            {alert("login = ", props.login)}
-            {alert("admin = ", props.admin)}
+            {/* {alert("login = ", props.login)}
+            {alert("admin = ", props.admin)} */}
             
             {/* <button id="view-btn" onClick={recentBooking}>View Booking</button> */}
             <section className="booking-details" id="hide">

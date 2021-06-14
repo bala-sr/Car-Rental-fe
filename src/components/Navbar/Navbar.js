@@ -11,7 +11,7 @@ function Navbar() {
     }
 
     return (
-
+        <Router>
             <nav className="navbar"> 
             {console.log("login = ", localStorage.getItem("login"))}
                 <h2 className="brand">
@@ -19,26 +19,26 @@ function Navbar() {
                 </h2>        
             
                 <ul>
-                    {/* {
-                        props.login && props.admin ?
+                    {
+                        localStorage.getItem("login") == "true" && localStorage.getItem("admin") == "true" ?
                         <li>
                             <a href="/users">Users</a>
                         </li> : null
-                    } */}
-                    {/* {
-                        props.login && props.admin ?
-                        <li>
-                            <a href="/bookingHistory">Booking History</a>
-                        </li> : null
-                    } */}
+                    } 
                     {
-                        localStorage.getItem("login") ? 
+                        localStorage.getItem("login") == "true" && localStorage.getItem("admin") == "true" ?
+                        <li>
+                            <a href="/bookingHistory">Archive</a>
+                        </li> : null
+                    }
+                    {
+                        localStorage.getItem("login") == "true" && !localStorage.getItem("admin") ? 
                         <li>
                             <Link to="/cart">Booking History</Link>
                         </li> : null
                     }
                     {
-                        localStorage.getItem("login") ?
+                        localStorage.getItem("login") == "true" ?
                         <li>
                             <Link to="/" onClick={logout}>Logout</Link>
                         </li> :
@@ -48,7 +48,7 @@ function Navbar() {
                     }
                 </ul>
             </nav>
-
+        </Router>              
     )
 }
 
