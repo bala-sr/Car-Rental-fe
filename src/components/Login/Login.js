@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import "./Login.css";
 
-function Login() {
+function Login(props) {
     const  [email, setEmail] = useState("");
     const  [password, setPassword] = useState("");
     let history = useHistory();
@@ -23,11 +23,11 @@ function Login() {
         .then((res) => {
             console.log(res);
             if(res.message == "Login Successful") {
-                // props.setLogin(true);
-                localStorage.setItem("login", true);
+                props.setLogin(true);
+                // localStorage.setItem("login", true);
                 if(email == "admin@gmail.com") {
-                    // props.setAdmin(true);
-                    localStorage.setItem("admin", true);
+                    props.setAdmin(true);
+                    // localStorage.setItem("admin", true);
                 }
                 localStorage.setItem("email", email);
                 history.push("/");

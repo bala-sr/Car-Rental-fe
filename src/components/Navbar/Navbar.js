@@ -2,43 +2,44 @@ import React from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar(props) {
 
     const logout = () => {
-        localStorage.removeItem("login");
-        localStorage.removeItem("admin");
+        // localStorage.removeItem("login");
+        // localStorage.removeItem("admin");
         localStorage.removeItem("email");
     }
 
     return (
         <Router>
             <nav className="navbar"> 
-            {console.log("login = ", localStorage.getItem("login"))}
+            {/* {console.log("login = ", localStorage.getItem("login"))}
+            {console.log("typeof login = ", typeof localStorage.getItem("login"))} */}
                 <h2 className="brand">
                     <Link to="/">Rental Sevices</Link> 
                 </h2>        
             
                 <ul>
                     {
-                        localStorage.getItem("login") == "true" && localStorage.getItem("admin") == "true" ?
+                        props.admin && props.login ?
                         <li>
                             <a href="/users">Users</a>
                         </li> : null
                     } 
                     {
-                        localStorage.getItem("login") == "true" && localStorage.getItem("admin") == "true" ?
+                        props.admin && props.login ?
                         <li>
                             <a href="/bookingHistory">Archive</a>
                         </li> : null
                     }
                     {
-                        localStorage.getItem("login") == "true" && !localStorage.getItem("admin") ? 
+                        !props.admin && props.login ? 
                         <li>
                             <Link to="/cart">Booking History</Link>
                         </li> : null
                     }
                     {
-                        localStorage.getItem("login") == "true" ?
+                        props.login ?
                         <li>
                             <Link to="/" onClick={logout}>Logout</Link>
                         </li> :

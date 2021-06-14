@@ -9,22 +9,25 @@ import Users from "./components/Users/Users.js";
 import "./App.css";
 
 function App() {
-  // const [isLoggedIn, setIsLoggedIn]=  useState(false);
-  // const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn]=  useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   // admin={isAdmin} setAdmin={setIsAdmin} 
 
   return (
     <div className="App">
 
 
-      <Navbar />
+      <Navbar login={isLoggedIn} admin={isAdmin} />
       <BrowserRouter>
        
-          <Route path="/" exact component={Homepage} />
+          <Route exact path="/"  exact component={Homepage} />
           {/* <Route path="/cart" exact component={Cart}/> */}
           <Route path="/cart" exact component={Cart}/>
           <Route path="/register" exact component={Register}/>
-          <Route path="/login"  component={Login} />
+          {/* <Route path="/login"  component={Login} /> */}
+          <Route path="/login" render = {() => (
+            <Login setLogin={setIsLoggedIn} setAdmin={setIsAdmin} />
+          )} />
           {/* <Route path='/users' exact component={Users}/> */}
           {/* <Route path='/admin' component={Admin}/> */}
        
