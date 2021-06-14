@@ -1,49 +1,54 @@
 import React from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import "./Navbar.css";
 
-function Navbar(props) {
+function Navbar() {
 
     const logout = () => {
-        props.setLogin(false);
+        localStorage.removeItem("login");
+        localStorage.removeItem("admin");
         localStorage.removeItem("email");
     }
 
     return (
-        <nav className="navbar"> 
-            <h2 className="brand">
-                <a href="/">Rental Sevices</a> 
-            </h2>        
-            {alert("navbar login = ", props)}         
-            <ul>
-                {/* {
-                    props.login && props.admin ?
-                    <li>
-                        <a href="/users">Users</a>
-                    </li> : null
-                } */}
-                {/* {
-                    props.login && props.admin ?
-                    <li>
-                        <a href="/bookingHistory">Booking History</a>
-                    </li> : null
-                } */}
-                {
-                    props.login ? 
-                    <li>
-                        <a href="/cart">Booking History</a>
-                    </li> : null
-                }
-                {
-                    props.login ?
-                    <li>
-                        <a href="/" onClick={logout}>Logout</a>
-                    </li> :
-                    <li>
-                        <a href="/login">Login</a>
-                    </li> 
-                }
-            </ul>
-        </nav>
+
+            <nav className="navbar"> 
+            {console.log("login = ", localStorage.getItem("login"))}
+                <h2 className="brand">
+                    <Link to="/">Rental Sevices</Link> 
+                </h2>        
+            
+                <ul>
+                    {/* {
+                        props.login && props.admin ?
+                        <li>
+                            <a href="/users">Users</a>
+                        </li> : null
+                    } */}
+                    {/* {
+                        props.login && props.admin ?
+                        <li>
+                            <a href="/bookingHistory">Booking History</a>
+                        </li> : null
+                    } */}
+                    {
+                        localStorage.getItem("login") ? 
+                        <li>
+                            <Link to="/cart">Booking History</Link>
+                        </li> : null
+                    }
+                    {
+                        localStorage.getItem("login") ?
+                        <li>
+                            <Link to="/" onClick={logout}>Logout</Link>
+                        </li> :
+                        <li>
+                            <Link to="/login">Login</Link>
+                        </li> 
+                    }
+                </ul>
+            </nav>
+
     )
 }
 
