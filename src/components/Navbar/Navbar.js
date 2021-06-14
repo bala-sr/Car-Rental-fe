@@ -4,7 +4,7 @@ import "./Navbar.css";
 function Navbar(props) {
 
     const logout = () => {
-        props.setLogin(0);
+        props.setLogin(false);
         localStorage.removeItem("email");
     }
 
@@ -28,13 +28,13 @@ function Navbar(props) {
                     </li> : null
                 } */}
                 {
-                    props.login == 1 ? 
+                    props.login ? 
                     <li>
                         <a href="/cart">Booking History</a>
                     </li> : null
                 }
                 {
-                    props.login == 1 ?
+                    props.login ?
                     <li>
                         <a href="/" onClick={logout}>Logout</a>
                     </li> :

@@ -9,8 +9,8 @@ import Users from "./components/Users/Users.js";
 import "./App.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn]=  useState("hello");
-  const [isAdmin, setIsAdmin] = useState(0);
+  const [isLoggedIn, setIsLoggedIn]=  useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   // admin={isAdmin} setAdmin={setIsAdmin} 
 
   return (

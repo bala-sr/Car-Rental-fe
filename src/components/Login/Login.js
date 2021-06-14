@@ -23,9 +23,9 @@ function Login(props) {
         .then((res) => {
             console.log(res);
             if(res.message == "Login Successful") {
-                props.setLogin(1);
+                props.setLogin(true);
                 if(email == "admin@gmail.com") {
-                    props.setAdmin(1);
+                    props.setAdmin(true);
                 }
                 alert("isLogin = ", props.login);
                 alert("isAdmin = ", props.admin);
