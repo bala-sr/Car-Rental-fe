@@ -21,10 +21,19 @@ function Login(props) {
         })
         .then((res) => res.json())
         .then((res) => {
-            if(res.message = "Login Successful") {
-                props.setLogin(true);
-                // localStorage.setItem("login", true);
+            console.log(res);
+            if(res.message == "Login Successful") {
+                props.setLogin(1);
+                if(email == "admin@gmail.com") {
+                    props.setAdmin(1);
+                }
+                alert("isLogin = ", props.login);
+                alert("isAdmin = ", props.admin);
+                localStorage.setItem("email", email);
                 history.push("/");
+            }
+            else {
+                alert(res.message);
             }
         })
     }

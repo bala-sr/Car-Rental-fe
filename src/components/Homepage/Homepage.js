@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import carsData from "../../CarData.js";
-import DateTimePicker from 'react-datetime-picker';
 import "./Homepage.css";
 
-function Homepage() {
-    const [startDate, setStartDate] = useState();
-    const [endDate, setEndDate] = useState();
-    const [startHour, setStartHour] = useState();
-    const [endHour, setEndHour] = useState();
-    // const [totalFare, setTotalFare] = useState(0);
+function Homepage(props) {
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
+    const [startHour, setStartHour] = useState("");
+    const [endHour, setEndHour] = useState("");
+    const [total, setTotal] = useState(0);
     let rateDisplay = document.createElement("p");
     let hours = 0;
 
@@ -18,6 +17,10 @@ function Homepage() {
         console.log("Hourly Rate:", rate);
         let date1 = new Date(startDate);
         let date2 = new Date(endDate);
+        setStartDate(date1);
+        setEndDate(date2);
+        console.log("start date = ", startDate);
+        console.log("end date = ", endDate);
         hours = Math.abs(date2 - date1);
         hours = hours/ (60 * 60 * 1000);
         if(parseInt(startHour) > parseInt(endHour)) {
@@ -28,15 +31,52 @@ function Homepage() {
         }
         console.log("hours = ", hours);      
         let totalFareCost = hours * rate;
-        // setTotalFare(totalFareCost);  
+        setTotal(totalFareCost);  
         console.log("Total fare = ", totalFareCost);
         rateDisplay.innerText = "Total Fare = " + totalFareCost;
         rateDisplay.setAttribute("id", "rate-display");
         document.getElementById(carName).appendChild(rateDisplay);
     }
 
+    //Booking Car
+    const book = async (car) => {
+        if(props.login === false) {
+            alert("Please login to book your vehicle.");
+        }
+        else if(!startDate || !endDate) {
+            alert("Please specify start date and end date.");
+        }
+        else {
+            await fetch("http://localhost:5000/book", {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Authorization": localStorage.urlWebToken,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    "email": localStorage.getItem("email"),
+                    "car": car,
+                    "startDate": startDate.toString().substr(4, 15),
+                    "endDate": endDate.toString().substr(4, 15),
+                    "fare": total,
+                    "paid": false    
+                })
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                if(res.message == "Booking successful!") 
+                alert("Booking successful. Please proceed to pay.");
+                else {
+                    alert("Unable to book. Try after sometime.");
+                }
+            })  
+        }
+    }
+
     return (
         <div className="container">
+            {console.log("Start date = ", startDate)}
             {
                 carsData.map((car) => {
                     return (
@@ -53,7 +93,7 @@ function Homepage() {
                             <input name="start-time" type="time" onChange={(e) => setEndHour(e.target.value)} /><br />
                             {/* <p id="total-hours" className={car.name} hidden>Total fare:</p> */}
                             <button className="btn-calculate" onClick={() => calculate(car.name, car.hourlyRate)}>Total Fare</button>
-                            <button className="btn-book">Book Now</button>
+                            <button className="btn-book" onClick={() => book(car.name)}>Book</button>
                         </div>
                     )
                 })

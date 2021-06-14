@@ -2,26 +2,39 @@ import React from 'react';
 import "./Navbar.css";
 
 function Navbar(props) {
-    // let login = localStorage.getItem("login");
 
     const logout = () => {
-        localStorage.removeItem("login");
+        props.setLogin(0);
+        localStorage.removeItem("email");
     }
 
     return (
         <nav className="navbar"> 
             <h2 className="brand">
                 <a href="/">Rental Sevices</a> 
-            </h2>                 
+            </h2>        
+            {alert("navbar login = ", props)}         
             <ul>
-                {
-                    props.login ? 
+                {/* {
+                    props.login && props.admin ?
                     <li>
-                        <a href="/cart">Fare Details</a>
+                        <a href="/users">Users</a>
+                    </li> : null
+                } */}
+                {/* {
+                    props.login && props.admin ?
+                    <li>
+                        <a href="/bookingHistory">Booking History</a>
+                    </li> : null
+                } */}
+                {
+                    props.login == 1 ? 
+                    <li>
+                        <a href="/cart">Booking History</a>
                     </li> : null
                 }
                 {
-                    props.login ?
+                    props.login == 1 ?
                     <li>
                         <a href="/" onClick={logout}>Logout</a>
                     </li> :
