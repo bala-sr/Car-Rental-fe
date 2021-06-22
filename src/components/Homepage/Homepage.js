@@ -8,6 +8,7 @@ function Homepage(props) {
     const [startHour, setStartHour] = useState("");
     const [endHour, setEndHour] = useState("");
     const [total, setTotal] = useState(0);
+    const [isPaid, setIsPaid] = useState(false);
     let rateDisplay = document.createElement("p");
     let hours = 0;
 
@@ -76,7 +77,7 @@ function Homepage(props) {
 
     return (
         <div className="container">
-            {console.log("Start date = ", startDate)}
+            {/* {console.log("Start date = ", startDate)} */}
             {
                 carsData.map((car) => {
                     return (

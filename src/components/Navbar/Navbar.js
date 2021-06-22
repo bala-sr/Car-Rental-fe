@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "./Navbar.css";
 
 function Navbar(props) {
@@ -7,11 +7,12 @@ function Navbar(props) {
     const logout = () => {
         // localStorage.removeItem("login");
         // localStorage.removeItem("admin");
+        props.setLogin(false);
+        props.setAdmin(false);
         localStorage.removeItem("email");
     }
 
     return (
-        <Router>
             <nav className="navbar"> 
             {/* {console.log("login = ", localStorage.getItem("login"))}
             {console.log("typeof login = ", typeof localStorage.getItem("login"))} */}
@@ -23,13 +24,13 @@ function Navbar(props) {
                     {
                         props.admin && props.login ?
                         <li>
-                            <a href="/users">Users</a>
+                            <Link to="/users">Users</Link>
                         </li> : null
                     } 
                     {
                         props.admin && props.login ?
                         <li>
-                            <a href="/bookingHistory">Archive</a>
+                            <Link to="/bookingHistory">Archive</Link>
                         </li> : null
                     }
                     {
@@ -41,16 +42,22 @@ function Navbar(props) {
                     {
                         props.login ?
                         <li>
-                            <Link to="/" onClick={logout}>Logout</Link>
+                            <Link to="/" onClick={logout}>
+                                Logout
+                            </Link>
                         </li> :
                         <li>
-                            <Link to="/login">Login</Link>
-                        </li> 
+                            <Link to="/login">
+                                Login
+                            </Link>
+                        </li>
                     }
                 </ul>
-            </nav>
-        </Router>              
+            </nav>            
     )
 }
 
 export default Navbar
+
+
+
