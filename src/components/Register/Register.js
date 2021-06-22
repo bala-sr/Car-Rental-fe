@@ -28,6 +28,15 @@ function Register() {
             .then((res) => res.json())
             .then((res) => {
                 console.log(res);
+                if(res.message == "Sign up successful") {
+                    alert("Signup Successful! Proceed to login");
+                }
+                else if(res.message == "Email already exists") {
+                    alert("Email already exists..")
+                }
+                else {
+                    alert("Unable to register! Try again later.");
+                }
             })
             .catch((err) => {
                 console.log(err);

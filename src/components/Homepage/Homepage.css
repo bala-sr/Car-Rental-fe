@@ -89,3 +89,28 @@ input {
 #rate-display {
     font-weight: 600;
 }
+
+@media screen and (max-width: 1000px) {
+    .container {
+        direction: flex;
+        flex-wrap: wrap;
+    }
+
+    .car-container {
+        width: 45%;
+        height: 500px !important;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .container {
+        direction: flex;
+        flex-wrap: wrap;
+    }
+
+    .car-container {
+        width: 80%;
+        height: 500px !important;
+        margin: 10px auto;
+    }
+}

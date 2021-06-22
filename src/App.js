@@ -6,6 +6,7 @@ import Register from "./components/Register/Register.js";
 import Homepage from "./components/Homepage/Homepage.js";
 import Cart from "./components/Cart/Cart.js";
 import Users from "./components/Users/Users.js";
+import BookingHistory from "./components/BookingHistory/BookingHistory";
 import "./App.css";
 
 function App() {
@@ -36,7 +37,9 @@ function App() {
           <Route path='/users' exact>
             <Users />
           </Route>    
-            {/* <Route path='/admin' component={Admin}/> */}  
+            <Route path='/bookingHistory'>
+              <BookingHistory />
+            </Route>      
         </Switch>  
     </>
   );

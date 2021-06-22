@@ -13,6 +13,12 @@ function Homepage(props) {
     let hours = 0;
 
     const calculate = (carName, rate) => {
+        let error = false;
+        if(!startDate || !endDate || !startDate || !endDate) {
+            alert("Please fill all the details..");
+            error = true;
+        }
+    
         console.log(carName);
         let totalHour = Math.abs(parseInt(startHour) - parseInt(endHour));
         console.log("Hourly Rate:", rate);
@@ -30,13 +36,15 @@ function Homepage(props) {
         else {
             hours = hours + totalHour;
         }
-        console.log("hours = ", hours);      
-        let totalFareCost = hours * rate;
-        setTotal(totalFareCost);  
-        console.log("Total fare = ", totalFareCost);
-        rateDisplay.innerText = "Total Fare = " + totalFareCost;
-        rateDisplay.setAttribute("id", "rate-display");
-        document.getElementById(carName).appendChild(rateDisplay);
+        if(!error) {
+            console.log("hours = ", hours);      
+            let totalFareCost = hours * rate;
+            setTotal(totalFareCost);  
+            console.log("Total fare = ", totalFareCost);
+            rateDisplay.innerText = "Total Fare = " + totalFareCost;
+            rateDisplay.setAttribute("id", "rate-display");
+            document.getElementById(carName).appendChild(rateDisplay);
+        }
     }
 
     //Booking Car
@@ -58,8 +66,8 @@ function Homepage(props) {
                 body: JSON.stringify({
                     "email": localStorage.getItem("email"),
                     "car": car,
-                    "startDate": startDate.toString().substr(4, 15),
-                    "endDate": endDate.toString().substr(4, 15),
+                    "startDate": startDate.toString().substr(4, 17),
+                    "endDate": endDate.toString().substr(4, 17),
                     "fare": total,
                     "paid": false    
                 })
@@ -94,7 +102,9 @@ function Homepage(props) {
                             <input name="start-time" type="time" onChange={(e) => setEndHour(e.target.value)} /><br />
                             {/* <p id="total-hours" className={car.name} hidden>Total fare:</p> */}
                             <button className="btn-calculate" onClick={() => calculate(car.name, car.hourlyRate)}>Total Fare</button>
-                            <button className="btn-book" onClick={() => book(car.name)}>Book</button>
+                            {
+                                props.admin ? null : <button className="btn-book" onClick={() => book(car.name)}>Book</button>
+                            }
                         </div>
                     )
                 })

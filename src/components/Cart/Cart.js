@@ -51,7 +51,7 @@ function Cart(props) {
             .then((res) => res.json())
             .then((res) => {
                 console.log(res.booking);
-                if(res) {
+                if(res.message != "No booking") {
                     setCar(res.car);
                     setStartDate(res.startDate);
                     setEndDate(res.endDate);
@@ -69,10 +69,14 @@ function Cart(props) {
                     fare.innerText = "Fare: Rs." +res.booking.fare;
                     setFare(res.booking.fare);
                     let list = document.getElementById("booking-list");
+                    document.getElementById("pay-btn").hidden = false;
                     list.appendChild(car);
                     list.appendChild(startDate);
                     list.appendChild(endDate);
                     list.appendChild(fare);
+                }
+                else {
+                    document.getElementById("error-msg").hidden = false;
                 }
             })
             .catch((err) => {
@@ -149,10 +153,11 @@ function Cart(props) {
             
             {/* <button id="view-btn" onClick={recentBooking}>View Booking</button> */}
             <section className="booking-details" id="hide">
+                <h2 id="error-msg" >No bookings found</h2>
                 <ul id="booking-list">
                         
                 </ul>
-                <button id="pay-btn" onClick={payment}>Pay Now</button>
+                <button id="pay-btn" onClick={payment} hidden>Pay Now</button>
             </section>
         </div>
     )
