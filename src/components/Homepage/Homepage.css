@@ -98,7 +98,7 @@ input {
 
     .car-container {
         width: 45%;
-        height: 500px !important;
+        height: 550px !important;
     }
 }
 
@@ -110,7 +110,7 @@ input {
 
     .car-container {
         width: 80%;
-        height: 500px !important;
+        height: 550px !important;
         margin: 10px auto;
     }
 }

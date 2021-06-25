@@ -38,6 +38,15 @@
     border-radius: 5px;
 }
 
+#booking-list {
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+#booking-list li {
+    padding: 5px 0;
+}
+
 #pay-btn {
     margin-left: 50px;
     background: rgb(113, 252, 113);

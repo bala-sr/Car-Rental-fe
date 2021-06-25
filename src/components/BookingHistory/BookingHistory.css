@@ -1,0 +1,37 @@
+#archive-container {
+    width: 90%;
+    margin: 20px auto;
+}
+
+#booking-table {
+    margin: 10px auto !important;
+}
+
+#booking-table, tr, td, th {
+   
+    border: 1px solid black;
+    padding: 10px;
+    border-collapse: collapse;
+}
+
+#booking-table th {
+    font-size: 18px;
+}
+
+#booking-table tr {
+    font-size: 15px;
+}
+
+th {
+    background: rgb(57, 149, 255);
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(99, 98, 98);
+    color: whitesmoke;
+}
+
+tr:nth-child(even) {
+    background-color: whitesmoke;
+    color: black;
+}

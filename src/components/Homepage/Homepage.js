@@ -28,6 +28,8 @@ function Homepage(props) {
         setEndDate(date2);
         console.log("start date = ", startDate);
         console.log("end date = ", endDate);
+        console.log("start time = ", startHour);
+        console.log("end time = ", endHour);
         hours = Math.abs(date2 - date1);
         hours = hours/ (60 * 60 * 1000);
         if(parseInt(startHour) > parseInt(endHour)) {
@@ -42,8 +44,12 @@ function Homepage(props) {
             setTotal(totalFareCost);  
             console.log("Total fare = ", totalFareCost);
             rateDisplay.innerText = "Total Fare = " + totalFareCost;
+            console.log("RateDisplay = ", rateDisplay.innerText);
             rateDisplay.setAttribute("id", "rate-display");
-            document.getElementById(carName).appendChild(rateDisplay);
+            if(!rateDisplay.innerText) {
+                document.getElementById(carName).appendChild(rateDisplay);
+            }
+            
         }
     }
 
@@ -66,10 +72,11 @@ function Homepage(props) {
                 body: JSON.stringify({
                     "email": localStorage.getItem("email"),
                     "car": car,
-                    "startDate": startDate.toString().substr(4, 17),
-                    "endDate": endDate.toString().substr(4, 17),
+                    "startDate": startDate.toString().substr(4, 11) + " " + startHour,
+                    "endDate": endDate.toString().substr(4, 11) + " " + endHour,
                     "fare": total,
                     "paid": false    
+                    
                 })
             })
             .then((res) => res.json())
@@ -80,6 +87,11 @@ function Homepage(props) {
                     alert("Unable to book. Try after sometime.");
                 }
             })  
+            setStartDate("");
+            setEndDate("");
+            setStartHour("");
+            setEndHour("");
+            setTotal(0);
         }
     }
 
