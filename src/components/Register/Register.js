@@ -14,7 +14,7 @@ function Register() {
             alert("Passwords not matching!!!")
         }
         else {
-            await fetch("http://localhost:5000/register", {
+            await fetch("https://rental-service-be.herokuapp.com/register", {
                 method: "POST",
                 mode: "cors",
                 headers: {

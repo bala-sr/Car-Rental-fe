@@ -4,7 +4,7 @@ import "./BookingHistory.css";
 function BookingHistory() {
 
     useEffect(async () => {
-        await fetch("http://localhost:5000/bookingHistory")
+        await fetch("https://rental-service-be.herokuapp.com/bookingHistory")
         .then((res) => res.json())
         .then((res) => {
             let j = 0;

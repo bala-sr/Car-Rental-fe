@@ -38,7 +38,7 @@ function Cart(props) {
     // }, []);
 
     const recentBooking = async () => {
-        await fetch("http://localhost:5000/bookingDetails", {
+        await fetch("https://rental-service-be.herokuapp.com/bookingDetails", {
                 method: "POST",
                 mode: "cors",
                 headers: {
@@ -98,7 +98,7 @@ function Cart(props) {
             alert("Razorpay SDK failed to load. Are you online?");
             return;
         }
-        await fetch("http://localhost:5000/order", {
+        await fetch("https://rental-service-be.herokuapp.com/order", {
                 method: "POST",
                 mode: "cors",
                 headers: {
@@ -120,7 +120,7 @@ function Cart(props) {
                     "callback_url": "http://localhost:5000/",
                     "handler": async function (response){
                         alert("Payment Successful!", response.razorpay_payment_id);
-                        await fetch("http://localhost:5000/", {
+                        await fetch("https://rental-service-be.herokuapp.com/", {
                             method: "POST",
                             mode: "cors",
                             headers: {

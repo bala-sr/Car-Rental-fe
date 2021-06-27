@@ -8,7 +8,7 @@ function Login(props) {
     let history = useHistory();
 
     const login = async () => {
-        await fetch("http://localhost:5000/login", {
+        await fetch("https://rental-service-be.herokuapp.com/login", {
             method: "POST",
             mode: "cors",
             headers: {

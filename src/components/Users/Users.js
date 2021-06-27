@@ -4,7 +4,7 @@ import "./Users.css";
 function Users() {
     const deleteUser = async (email) => {
         console.log("Email = ", email);
-        await fetch("http://localhost:5000/deleteUser", {
+        await fetch("https://rental-service-be.herokuapp.com/deleteUser", {
             method: "POST",
             mode: "cors",
             headers: {
@@ -27,7 +27,7 @@ function Users() {
     };
     
     useEffect(async () => {
-        await fetch("http://localhost:5000/getUsers")
+        await fetch("https://rental-service-be.herokuapp.com/getUsers")
             .then((res) => res.json())
             .then((res) => {
                 // console.log("users list = ", res[1]);

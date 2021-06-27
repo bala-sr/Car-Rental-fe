@@ -62,7 +62,7 @@ function Homepage(props) {
             alert("Please specify start date and end date.");
         }
         else {
-            await fetch("http://localhost:5000/book", {
+            await fetch("https://rental-service-be.herokuapp.com/book", {
                 method: "POST",
                 mode: "cors",
                 headers: {
