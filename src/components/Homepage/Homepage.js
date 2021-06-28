@@ -43,10 +43,10 @@ function Homepage(props) {
             let totalFareCost = hours * rate;
             setTotal(totalFareCost);  
             console.log("Total fare = ", totalFareCost);
-            rateDisplay.innerText = "Total Fare = " + totalFareCost;
             console.log("RateDisplay = ", rateDisplay.innerText);
             rateDisplay.setAttribute("id", "rate-display");
-            if(!rateDisplay.innerText) {
+            if(total !== totalFareCost) {
+                rateDisplay.innerText = "Total Fare = " + totalFareCost;
                 document.getElementById(carName).appendChild(rateDisplay);
             }
             
